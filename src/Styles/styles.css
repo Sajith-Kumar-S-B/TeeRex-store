@@ -153,12 +153,12 @@ input{
     height: 300px;
     /* border: 1px solid orange; */
     position: relative;
-   
+   padding: 0 1rem;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     background-color: #fff;
-
+     align-items: center;
     box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
 }
 .product_card > img{
@@ -169,7 +169,7 @@ input{
 .product_card > .item_details{
     width: 100%;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
 }
 .product_card > .product_title{
     position: absolute;
@@ -180,12 +180,11 @@ input{
     bottom: 2%;
 }
 .item_details > button{
-    width: 40%;
+    width: 30%;
     height: 30px;
     border: none;
     background-color: black;
     color: white;
-    margin-top: -7px;
     border-radius: 5px;
     cursor: pointer;
 }

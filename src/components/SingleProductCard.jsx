@@ -1,10 +1,13 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { add_cart_item } from '../Redux/CartConstant'
+import {wishlist_item} from '../Redux/WishlistConstant'
 
 export default function SingleProductCard({item}) {
    const dispatch=useDispatch();
     const {cartData} = useSelector((store)=>store.CartReducer)
+    const {wishlistData} = useSelector((store)=>store.WishlistReducer)
+
    // console.log("cart data" , cartData)
   
 
@@ -15,7 +18,18 @@ export default function SingleProductCard({item}) {
         <img src={`${item.imageURL}`} alt=" PRODUCT IMAGES" />
          <div className="item_details">
             <p className='text-dark'>Rs {item.price}</p>
-            <div> <i class="fa-solid fa-heart"></i></div>
+            <button onClick={()=>{
+             
+                let itemIndex=wishlistData.findIndex((e)=>e.id==item.id)
+                console.log(itemIndex)
+                if(itemIndex!=-1){
+                  alert("Item is already in the wishlist !!")
+                  return 
+                }
+              
+               dispatch(wishlist_item(item));
+               alert(`${item.name} added to wishlist !!`)
+            }} >Wishlist</button>
             <button onClick={()=>{
                // checking for duplicate item in the cart
                 let itemIndex=cartData.findIndex((e)=>e.id==item.id)

@@ -13,6 +13,8 @@ export default function ProductList() {
        const dispatch= useDispatch();
       const navigate= useNavigate();
       const {cartData} = useSelector((store)=>store.CartReducer)
+      const {wishlistData} = useSelector((store)=>store.WishlistReducer)
+
        const {fetchedData,filterData,loading,error}= useSelector((store)=>store.productReducer);
         const mappingData= filterData.length?filterData:fetchedData
        const [selectedCategory,setSelectedCategory]=useState([]);
@@ -44,7 +46,7 @@ export default function ProductList() {
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="ms-auto">
           <Nav.Link className='btn border rounded'><Link className='d-flex justify-content-center align-items-center' to={'/wishlist'} style={{textDecoration:'none',color:'black'}}><i className="fa-solid fa-heart me-2" style={{color: "#FF5733"}}></i>
-          Wishlist
+          Wishlist <span>{wishlistData.length?wishlistData.length:""}</span>
           <Badge className='ms-2 rounded bg-secondary' ></Badge></Link></Nav.Link>
           <Nav.Link className='btn border rounded ms-3'><Link className='d-flex justify-content-center align-items-center' to={'/cart'} style={{textDecoration:'none',color:'black'}}><i className="fa-solid fa-cart-shopping me-2" style={{color: "#C70039"}}></i>
           Cart <span>{cartData.length?cartData.length:""}</span>
