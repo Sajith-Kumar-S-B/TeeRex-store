@@ -20,10 +20,7 @@ export default function ProductList() {
        const { search, setSearch } = useContext(Context);
     console.log(search);
 
-    const searchData = () =>{
-        dispatch(product_search(search.split(" ")) );
-    }
-
+   
 
              
    

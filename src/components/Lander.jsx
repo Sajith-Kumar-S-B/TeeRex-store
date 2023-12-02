@@ -1,4 +1,4 @@
-import React,{useContext} from 'react';
+import React,{useContext,useEffect} from 'react';
 import { useDispatch } from 'react-redux';
 import "../Styles/styles.css"
 
@@ -11,9 +11,16 @@ const Lander = () => {
     const { search, setSearch } = useContext(Context);
     console.log(search);
 
+    
     const searchData = () =>{
         dispatch( product_search(search.split(" ")) );
     }
+    useEffect(()=>{
+        
+searchData()
+
+
+    },[search])
 
     
   return (
