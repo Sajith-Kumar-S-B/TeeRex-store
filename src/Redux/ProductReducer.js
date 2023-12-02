@@ -47,20 +47,27 @@ const filterHandler=(data ,selectedValues)=>{
     return result
 }
 
-const searchDataHandler=(data,inputValues)=>{
+const searchDataHandler=(data,values)=>{
 
-      let search_result= data.filter((e)=>{
-                if((e.color==inputValues[0] && e.type==inputValues[1])){
-                    return e
-                }
-            //   if( e.color==inputValues[0] ){
-            //           return e
-            //     }
-            //      if( e.type==inputValues[0]){
-            //         return e
-            //   }
-      });
-      console.log("searced data" , search_result)
-      return search_result.length?search_result:data
+   let result = data.filter((e)=>{
+      let type = e.type;
+      let color = e.color;
+      let gender = e.gender;
+
+      if(values.length > 1){
+         if(color.toLowerCase() == values[0].toLowerCase() && type.toLowerCase() == values[1].toLowerCase() ){
+            return e;
+         }
+      }
+      else if(color.toLowerCase() == values[0].toLowerCase()){
+         return e;
+      }
+      else if(gender.toLowerCase() == values[0].toLowerCase()){
+         return e;
+      }
+
+           
+   });
+   return result.length  ? result : data
 
 }
